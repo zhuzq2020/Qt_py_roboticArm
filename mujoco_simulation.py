@@ -13,7 +13,7 @@ def run_simulation(ctrl_params):
         data.ctrl[:6] = ctrl_params[:6]
     else:
         print(f"警告: 不足的控制参数数量，使用默认值")
-        data.ctrl[:6] = [-1.57, -1.34, 2.65, -1.3, 1.55, 0]
+        data.ctrl[:6] = [0, -1, -1, 0, 0, 0]
 
     with mujoco.viewer.launch_passive(model, data) as viewer:
         print("仿真已启动，控制参数:", data.ctrl[:6])
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     # 如果文件读取失败，使用默认值
     if not ctrl_params or len(ctrl_params) < 6:
-        ctrl_params = [-1.57, -1.34, 2.65, -1.3, 1.55, 0]
+        ctrl_params = [0, -1, -1, 0, 0, 0]
         print("使用默认控制参数")
 
     run_simulation(ctrl_params)
