@@ -13,7 +13,7 @@ def run_simulation(ctrl_params):
         data.ctrl[:6] = ctrl_params[:6]
     else:
         print(f"警告: 不足的控制参数数量，使用默认值")
-        data.ctrl[:6] = [0, -1, -1, 0, 0, 0]
+        data.ctrl[:6] = [0, 0, 0, 0, 0, 0]
 
     with mujoco.viewer.launch_passive(model, data) as viewer:
         print("仿真已启动，控制参数:", data.ctrl[:6])
@@ -38,7 +38,7 @@ def run_simulation(ctrl_params):
                 except json.JSONDecodeError:
                     print("警告: 无法解析控制参数文件")
 
-                time.sleep(0.002)  # 控制更新频率
+                time.sleep(0.0001)  # 控制更新频率
         except Exception as e:
             print(f"仿真错误: {str(e)}")
 
